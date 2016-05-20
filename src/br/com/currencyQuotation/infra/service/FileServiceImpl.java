@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+import br.com.currencyQuotation.domain.exception.FileException;
 import br.com.currencyQuotation.domain.factory.CotacaoFactory;
 import br.com.currencyQuotation.domain.service.FileService;
 
@@ -21,6 +22,11 @@ public class FileServiceImpl<CotacaoEntity> implements FileService<CotacaoEntity
 		try {
 
 			fileReader = new FileReader(fullFileName);
+			
+			if(fileReader == null){
+				new FileException("File not found!");
+			}
+			
 			bufferedReader = new BufferedReader(fileReader);
 
 			String lineFile;

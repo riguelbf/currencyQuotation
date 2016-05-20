@@ -10,7 +10,12 @@ public class GreaterThanZeroSpecification implements SpecificationBase {
 
 	public void validate(BigDecimal value) {
 		if(value.longValue() < 0){
-			new BusinessException("Value less than zero!");
+			this.generateExceptionRole("Value less than zero!");
 		}
+	}
+
+	@Override
+	public void generateExceptionRole(String errorMessage) {
+		new BusinessException("Value less than zero!");
 	}
 }

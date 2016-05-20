@@ -9,13 +9,20 @@ public class DateSpecification implements SpecificationBase {
 
 	private static final long serialVersionUID = -8331850486596395976L;
 
-	public void validate(Object value) {
+	public LocalDate validate(Object value) {
 
+		LocalDate date = null;
 		try {
 			final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			LocalDate.parse(value.toString(), formatter);
+			date = LocalDate.parse(value.toString(), formatter);
 		} catch (Exception e) {
-			new BusinessException("Invalid date!!");
+			this.generateExceptionRole("Invalid date!!");
 		}
+		return date;
+	}
+
+	@Override
+	public void generateExceptionRole(String errorMessage) {
+		new BusinessException(errorMessage);
 	}
 }

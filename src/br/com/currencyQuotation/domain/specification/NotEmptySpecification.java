@@ -8,8 +8,14 @@ public class NotEmptySpecification implements SpecificationBase {
 
 	public void validate(Object value) {
 
-		if (((String) value).isEmpty())
-			new BusinessException("Value can not be empty!");
+		if (((String) value).isEmpty()) {
+			this.generateExceptionRole("Value can not be empty!");
+		}
+	}
+
+	@Override
+	public void generateExceptionRole(String errorMessage) {
+		new BusinessException(errorMessage);
 
 	}
 }

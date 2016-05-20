@@ -9,8 +9,13 @@ public class NotNullSpecification implements SpecificationBase {
 	public void validate(Object value) {
 
 		if (value == null) {
-			new BusinessException("Value less than zero!");
+			this.generateExceptionRole("Value less than zero!");
 		}
+	}
+
+	@Override
+	public void generateExceptionRole(String errorMessage) {
+		new BusinessException(errorMessage);
 
 	}
 }
