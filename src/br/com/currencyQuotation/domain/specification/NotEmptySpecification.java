@@ -8,7 +8,7 @@ public class NotEmptySpecification implements SpecificationBase {
 
 	public void validate(Object value) {
 
-		if (((String) value).isEmpty()) {
+		if (value.toString().isEmpty()) {
 			this.generateExceptionRole("Value can not be empty!");
 		}
 	}

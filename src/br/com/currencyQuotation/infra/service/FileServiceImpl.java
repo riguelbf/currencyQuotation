@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.currencyQuotation.domain.exception.FileException;
@@ -14,7 +15,7 @@ public class FileServiceImpl<CotacaoEntity> implements FileService<CotacaoEntity
 
 	private BufferedReader bufferedReader;
 	private FileReader fileReader;
-	private List<CotacaoEntity> cotacoes;
+	private List<CotacaoEntity> cotacoes = new ArrayList<>();
 
 	@SuppressWarnings({ "finally", "unchecked" })
 	@Override
@@ -29,9 +30,12 @@ public class FileServiceImpl<CotacaoEntity> implements FileService<CotacaoEntity
 			
 			bufferedReader = new BufferedReader(fileReader);
 
+			
+			CotacaoFactory factory = new CotacaoFactory();
 			String lineFile;
 			while ((lineFile = bufferedReader.readLine()) != null) {
-				cotacoes.add((CotacaoEntity) new CotacaoFactory().build(lineFile));
+				
+				cotacoes.add((CotacaoEntity) factory.build(lineFile));
 			}
 
 		} catch (FileNotFoundException ex) {

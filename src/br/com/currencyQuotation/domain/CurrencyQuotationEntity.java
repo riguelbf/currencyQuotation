@@ -58,9 +58,8 @@ public class CurrencyQuotationEntity extends AggregationRoot {
 
 	private void setValue(Number value) {
 
-		new NotEmptySpecification().validate(value);
 		new NotNullSpecification().validate(value);
-		new GreaterThanZeroSpecification().validate((BigDecimal) value);
+		new GreaterThanZeroSpecification().validate(new BigDecimal(value.toString()));
 		this.value = value;
 	}
 

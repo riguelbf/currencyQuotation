@@ -30,6 +30,7 @@ public class CotacaoEntity extends AggregationRoot {
 		setTaxaVenda(taxaVenda);
 		setParidadeCompra(paridadeCompra);
 		setParidadeVenda(paridadeVenda);
+		setDataCotacao(dataCotacao);
 	}
 
 	

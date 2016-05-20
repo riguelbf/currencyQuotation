@@ -17,7 +17,7 @@ public class Main {
 		try {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+			
 			System.out.print("Enter full file name :");
 			String fullFileName = br.readLine();
 
@@ -29,6 +29,9 @@ public class Main {
 			System.out.print("Enter to :");
 			String to = br.readLine();
 
+			System.out.print("Enter quotation :");
+			String quotation = br.readLine();
+			
 			Number value = null;
 
 			for (int i = 0; i < 3; i++) {
@@ -43,9 +46,6 @@ public class Main {
 					}
 				}
 			}
-
-			System.out.print("Enter quotation :");
-			String quotation = br.readLine();
 
 			BigDecimal currencyQuotation = new QuotationServiceImpl(cotacoes).currencyQuotation(from, to, value, quotation);
 			System.out.print("Your quotation is: ".concat(currencyQuotation.toString()));
